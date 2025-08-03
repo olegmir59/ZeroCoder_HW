@@ -101,11 +101,11 @@ class Monster:
         self.health = health
 
     def take_damage(self):
-        self.health -= 50  # Урон от оружия
+        self.health -= 30  # Урон от оружия
         if self.health <= 0:
             print("Монстр побежден!")
         else:
-            print("Монстр ранен!")
+            print(f"Монстр ранен! Осталось здоровья: {self.health}.")
 
 
 # Механизм боя
@@ -114,6 +114,8 @@ def battle(fighter: Fighter, monster: Monster):
     if fighter.fight():
         monster.take_damage()
 
+
+if __name__ == "__main__":
     monster = Monster()
 
     # Бой с мечом
@@ -126,4 +128,8 @@ def battle(fighter: Fighter, monster: Monster):
 
     # Добавление нового оружия без изменения кода Fighter и Monster
     fighter.change_weapon(Axe())
+    battle(fighter, monster)
+
+    #Бой  с луком
+    fighter.change_weapon(Bow())
     battle(fighter, monster)
